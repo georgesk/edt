@@ -1,0 +1,6 @@
+*.db
+edt.db-*
+*.sql
+*~
+Ui_*.py
+__pycache__

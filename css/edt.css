@@ -1,0 +1,170 @@
+body{
+    height: 640px;
+}
+.ui-widget-header p, .ui-widget-content p { 
+                                            margin: 0; 
+                                            }
+.admin-action {
+    border: 1px navy solid;
+    background-color: lightyellow;
+    padding: 1ex;
+    border-radius:1ex;
+}
+
+.action-parms {
+    border: 1px wheat solid;
+    border-radius: 0.5ex;
+    background-color: ivory;
+}
+
+.action-parms fieldset{
+    border: 1px blanchedalmond solid;
+    border-radius: 0.5ex;
+    background-color: cornsilk;
+    margin: 1ex;
+    float: left;
+}
+
+.action-parms .submit{
+    margin: 1ex;
+    border-radius: 0.5ex;
+}
+
+.column-title.top{
+    z-index: 1001;
+}
+.column-title.bottom{
+    z-index: 1000;
+}
+.column-title p{
+    font-size: 25px;
+    padding-top:5px;
+}
+
+.etiquette.top{
+    z-index: 1011;
+}
+.etiquette.bottom{
+    z-index: 1010;
+}
+
+.ui-dialog { 
+    z-index: 2000 !important ;
+}
+
+.etiquette p {
+  padding: 1px;
+  margin:0px;
+  font-size: 95%;
+}
+
+div.etiquette {
+  border: 1px solid gray;
+}
+
+#ui-datepicker-div {
+    border: 1px solid rgb(128, 128, 128);
+    padding: 5px;
+    background: rgb(230,200,100);
+    display: none;
+}
+
+.ui-datepicker {
+    width: 18em!;
+    z-index: 1500 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Helvetica;
+    color: purple;
+}
+
+
+#header {
+    background: rgb(255,200,0);
+    border: 1px red solid;
+    font-size: 25px;
+}
+
+#header .ident {
+    color: white;
+    float: right;
+}
+
+#header .logout {
+                  float: right;
+                  margin: auto 10px;
+}
+
+#adminlink {
+    color: red;
+    font-family: Courier, Fixed;
+}
+
+#save {
+    position: absolute;
+    top: 51px;
+    left: 15px;
+    width: 50px;
+}
+
+#save_calendar {
+    font-size: 70%;
+    width: 60px;
+    position: relative;
+    left: -8px;
+}
+
+#create {
+    position: absolute;
+    top: 51px;
+    left: 75px;
+    width: 50px;
+}
+
+#delete {
+    position: absolute;
+    top: 51px;
+    left: 135px;
+    width: 50px;
+}
+
+
+.inverseur a {
+	padding-left: 10px;	
+	position: relative;
+	-moz-user-select: none;
+}
+ 
+.inverseur a:focus {
+	outline: none;
+}
+ 
+.inverseur .toggle {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../images/layout/toggle_arrows.png) no-repeat -39px -16px;
+	width: 14px;
+	height: 16px;
+}
+ 
+.inverseur .unfolded .toggle {
+	background-position: -68px -16px;
+}
+ 
+.repliable {
+	background-color: #ebebeb;
+	padding: 10px;
+}
+
+.inter {
+    border: 1px solid navy;
+    border-radius:0.3ex;
+    font-family: "Courier, Fixed";
+}
+
+.link {
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+
+#etiquetteInput tr{
+    margin-top: 2px;
+}
+
+
+#etiquetteInput .right{
+    text-align: right;
+    margin-right: 5px;
+}

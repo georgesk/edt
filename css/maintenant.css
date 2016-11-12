@@ -1,0 +1,39 @@
+p.nom {
+    font-size: 140%;
+    font-weight: bold;
+    font-family: Times;
+    text-align: center;
+}
+
+p.cours {
+    text-align: center;
+}
+
+table.edt {
+    background: wheat;
+    border: 1px solid navy;
+}
+
+table.edt th{
+    font-size: 200%;
+    background: white;
+    border: 1px solid grey;
+}
+
+table.edt td{
+    background: lightyellow;
+    border: 1px solid grey;
+}
+
+table.etiq th{
+    font-size: 200%;
+    background: white;
+    border: 1px solid grey;
+}
+
+table.etiq td{
+    width: 4em;
+    background: lightyellow;
+    border: 1px solid grey;
+}
+
