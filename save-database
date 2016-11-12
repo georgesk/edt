@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TOSAVE=/srv/edt.lyceejeanbart.fr/edt.db
+TOSAVE=$(pwd)/edt.db
 TARGET=${TOSAVE}-$(date +%Y%m%d-%H%M)
 
 cp ${TOSAVE} ${TARGET}
