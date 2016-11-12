@@ -11,7 +11,7 @@ window.setInterval(refresh, 30000); // rafraîchit toutes les 30 secondes
  **/
 function refresh(){
     $.get("maintenant.ajax.php?date="+window.date, function(data){
-	$("#titre").html(data.date);
+	$("#titre").html(window.titre);
 	dechiffre(data);
 	var intervalle={
 	    // l'intervalle de temps pour le tableau

@@ -14,6 +14,9 @@ if (isset($_GET["date"])){
   $date=strftime("%Y-%m-%d %H:%M");
 }
 
+$dtt=new DateTime($date);
+$tstamp=$dtt->getTimeStamp();
+
 $datetime=explode(" ", $date);
 $date=$datetime[0];
 $hm=explode(":",$datetime[1]);
@@ -30,8 +33,8 @@ print('<html>
     <title>..:: EDT maintenant ::..</title>
     <link rel="stylesheet" type="text/css" href="css/maintenant.css"/>
     <script type="text/javascript">
-      window.titre="'.strftime("%A %e %B %Y, il est %H:%M").'"
-      window.date="'.strftime("%Y-%m-%d+%H:%M").'";
+      window.titre="'.strftime("%A %e %B %Y, il est %H:%M", $tstamp).'"
+      window.date="'.strftime("%Y-%m-%d+%H:%M", $tstamp).'";
       window.heure="'.$h0.'"
     </script>
     <script type="text/javascript" src="/javascript/jquery/jquery.js">
