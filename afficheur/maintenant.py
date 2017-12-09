@@ -59,24 +59,14 @@ class MaFenetre(QMainWindow):
         # sinon les ajustements d'échelle sont inopérants.
         self.showFullScreen()
         ## on ajuste l'accès au web
-        proxies=[]
-        if parsed.proxy:
-            proxies.append((parsed.proxy, parsed.port))
-            proxies=proxies*3 # on essayera trois fois le premier proxy
-        proxies.append((None,3128)) # solution de secours : pas de proxy
-        for p in proxies:
-            self.proxyHost=p[0]
-            self.proxyPort=int(p[1])
-            if self.loadURL()==QNetworkReply.NoError:
-                # Si on arrive à obtenir un résultat par un des proxys
-                # de la liste, on le garde et on stoppe les recherches.
-                break
+        self.proxyHost, self.proxyPort = parsed.proxy, parsed.port
         ## on programme la répétition de ce rechargement de l'url
         delay=10 * 1000                 ## toutes les 10 secondes
         self.timer=QTimer()
         atexit.register(self.stopTimer)
         self.timer.timeout.connect(self.loadURL)
         self.timer.start(delay)
+        self.loadURL()
         return
 
     def stopTimer(self):
@@ -100,14 +90,28 @@ class MaFenetre(QMainWindow):
         mgr.finished.connect(el.quit)
         req=QNetworkRequest(QUrl(self.url))
         reply=mgr.get(req)
+        # stoppera la requête en l'absence de réponse, sous 2 secondes
+        def abortReply():
+            reply.abort()
+            return
+        replyTimer=QTimer()
+        replyTimer.timeout.connect(abortReply)
+        replyTimer.setSingleShot(True)
+        replyTimer.start(2000)
+        
         el.exec_()
 
+        if replyTimer.remainingTime() > -1:
+            print("GRRRR arrêt du timer, il restait :", replyTimer.remainingTime())
+            replyTimer.stop() # arrête replyTimer s'il tourne encore
         error = reply.error()
-        if error == QNetworkReply.NoError:
+        try:
+            assert(error == QNetworkReply.NoError)
             self.ui.statusbar.showMessage("Mise à jour ... ok.", 1000)
             self.parseJSON(reply)
-        else:
-            self.ui.statusbar.showMessage("Échec : {}".format(reply.errorString()), 1000)
+        except Exception as e:
+            self.ui.statusbar.showMessage("Échec : {}, {}".format(
+                reply.errorString(), e), 1000)
         return error
 
     def adjustDate(self):
