@@ -20,7 +20,7 @@ if (isset($_POST["uid"]) && isset($_POST["pwd"])){
    $host  = $_SERVER['HTTP_HOST'];
    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
    $_SESSION['uid']=$_POST["uid"];
-   header("Location: http://$host$uri/index.php");
+   header("Location: https://$host$uri/index.php");
   }
 } 
 ?>

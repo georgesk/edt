@@ -77,7 +77,7 @@ function save() {
     o.col = c.text();
     o.place = obj2col(c, data.nbcol);
     data.colPos.push(o);
-    data.tickets=tickets().toSource();
+    data.tickets=JSON.stringify(tickets());
   }
   $.post("ajax.php", data, saveOK);
 }
@@ -87,7 +87,7 @@ function save() {
  * ou plus exactement quand le serveur signale que la page 'ajax.php'
  * a pu être traitée.
  **/
-function saveOK(){
+function saveOK(data){
   // il vaudrait mieux récupérer la date en feedback depuis le XHR
   var box=$("<div>");
   var d = $("#save_calendar").val();
@@ -98,6 +98,8 @@ function saveOK(){
     </p>\
     <p>\
     Date valide pour l&apos;enregistrement : <span id=\"date-save\">"+d+"</span>.\
+    </p>\
+    <p>Nombre d&apos;enregistrements : "+data+"\
     </p>";
   box.html(contents);
   box.dialog({

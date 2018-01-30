@@ -26,6 +26,7 @@ $dbh = new PDO('sqlite:edt.db');
 $sql = "SELECT * FROM draggables WHERE date='".$d4db."'";
 $res = $dbh->query($sql);
 $o=$res->fetchObject();
+$dbh->beginTransaction();
 if (! $o){ // Rien pour cette date, on crée l'enregistrement
   $sql = "INSERT INTO draggables (tickets,ordering,date,nbcol) VALUES(".$dbh->quote($tickets).",".$dbh->quote($colpos4db).",".$dbh->quote($d4db).",".$dbh->quote($nbCol).")";
   $count=$dbh->exec($sql);
@@ -33,6 +34,8 @@ if (! $o){ // Rien pour cette date, on crée l'enregistrement
   $sql = "UPDATE draggables SET tickets=".$dbh->quote($tickets).", ordering=".$dbh->quote($colpos4db).", nbcol=".$dbh->quote($nbCol)." WHERE date='".$d4db."'";
   $count=$dbh->exec($sql);
 }
+$dbh->commit();
 
-
+header('Content-Type: application/json');
+echo json_encode($count);
 ?>
